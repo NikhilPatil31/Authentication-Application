@@ -17,7 +17,7 @@ Example.
 
 <br><br>
 
-# Fetch Data Using Authorization
+# Fetch Data Using Authentication(Token Authentication/ JWT Token Authentication)
 In that section, We are trying to access the data from server using api. If user registered then the user can access the data.
 
 1. After setting the project you want to create super user. Login the admin panel and create a token for admin.
@@ -37,7 +37,7 @@ Example.
 
 <br><br>
 
-# Code to generate a JWT Token Based on given data
+# Generate a JWT Token Based on given data
 In that section, we are trying to generate a JWT Token Based on User Details like Firstname, Lastname and Age.
 <br>
 
@@ -68,3 +68,21 @@ Example.
 <br>
 
 ![alt text](<Output/refresh jwt token.png>)
+
+<br><br>
+
+# Get or Create Token Using API Call
+
+In that section, We try to generate a Token using API Call. We are creating a Token for a user who is not have any token.
+
+1. After setting django project we want to create super user. After that if we don't create a token for admin so don't worry we can generate the token either login admin panel or using API Call. But we want the another user token to generate the admin token.
+2. So do User registration using api call(postman) then we got JWT Token.
+3. After that we go to postman and paste the url of login api and select POST method.
+4. After that go to the Authorization and select Bearer Token and pass the access key in given field.
+5. Then goto the body section and select raw option and select JSON Type and write the <b>username, password</b> in JSON Format and hit the api, You are successfully get newly created Token or get existed Token.
+
+<br>
+Example.
+<br><br>
+
+![alt text](<Output/get or create token.png>)

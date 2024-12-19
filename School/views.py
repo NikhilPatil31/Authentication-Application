@@ -148,7 +148,7 @@ def log_out(request):
     return redirect("log_in")
 
 
-#Fetch Data Using Authorization(Token Authentication/ JWT Token Authentication)
+#Fetch Data Using Authentication(Token Authentication/ JWT Token Authentication)
 class StudentApi(APIView):
     # authentication_classes = [JWTAuthentication]
     # permission_classes = [IsAuthenticated]
