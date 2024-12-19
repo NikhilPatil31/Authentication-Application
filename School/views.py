@@ -150,15 +150,19 @@ def log_out(request):
 
 #Fetch Data Using Authorization
 class StudentApi(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-    def get(self, request):
-        queryset = Student.objects.all()
-        serializer = StudentModelSerializer(queryset, many=True)
-        return Response({
-            "status" : True,
-            "data" : serializer.data
-        })
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
+
+    #This expression is check the user accessing the data using which token
+    if JWTAuthentication or IsAuthenticated :
+        #User can access the data using token or jwt token
+        def get(self, request):
+            queryset = Student.objects.all()
+            serializer = StudentModelSerializer(queryset, many=True)
+            return Response({
+                "status" : True,
+                "data" : serializer.data
+            })
 
     
 #Code To generate or get Token
