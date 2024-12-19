@@ -54,3 +54,17 @@ Example.
 
 <br>
 <br>
+
+# Refresh JWT Token
+
+In that section, We are trying to refresh the JWT Token. JWT provides method to refresh the expired JWT Token. Which helps to work fluintly.
+
+1. After completing User registration using api call (postman) we get a two tokens Refresh Token and Access Token. Access Token used to accessing the data. Access token is expired after some time then we call the method which helps to generate new access token or refresh the access token.
+2. When Access token expired goto postman and paste the url of refresh token api and select POST method.
+3. After that goto body section and select raw option and select JSON and write the <b>username, password</b> in JSON Format and hit the api, You are successfully get refreshed <b>JWT Token</b>.
+<br>
+Example.
+<br>
+<br>
+
+![alt text](<Output/refresh jwt token.png>)
