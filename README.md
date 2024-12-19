@@ -8,4 +8,5 @@ In that section, We are registering a user through postman api. When user regist
 3. After setting the method go to the headers and add the key <b>Authentication </b> and value like <b> Token token_key </b>.
 4. After that go to body in that go to the raw option and select json and write the data <b>username, password</b> and <b>confirm password</b> and hit the api, You are successfully register and get <b>JWT Token</b>.
  
+
 ![alt text](<Output/generate jwt token using registration.png>)
