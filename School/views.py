@@ -50,7 +50,7 @@ def registration(request):
             user = User.objects.create_user(username = username, password = password)
             user.save()
             refresh = RefreshToken.for_user(user)
-            return Response({
+            return HttpResponse({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
             })
@@ -67,9 +67,9 @@ class RegisterView(APIView):
         
         if serializer.is_valid():
             
-            username = serializer.data['username']
-            password = serializer.data['password']
-            confirm_password = serializer.data['confirm_password']
+            username = serializer.data.get('username',False)
+            password = serializer.data.get('password',False)
+            confirm_password = serializer.data.get('confirm_password',False)
 
             user = authenticate(username=username, password = password)
             if user:
@@ -163,7 +163,7 @@ class StudentApi(APIView):
     
 #Code To generate or get Token
 class LoginView(APIView):
-    
+
     def post(self,request):
         data = request.data
         serializer = LoginSerializer(data=data)
@@ -173,13 +173,13 @@ class LoginView(APIView):
                 "data" : serializer.errors
             })
         
-        username = serializer.data['username']
-        password = serializer.data['password']
+        username = serializer.data.get('username')
+        password = serializer.data.get('password')
 
-        user_obj = authenticate(username = username, password = password)
+        user = authenticate(username = username, password = password)
 
-        if user_obj:
-            token, _ = Token.objects.get_or_create()
+        if user:
+            token, _ = Token.objects.get_or_create(user = user)
             return Response({
             "status" : True,
             "data" : {'Token': str(token)}
