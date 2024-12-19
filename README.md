@@ -1,1 +1,1 @@
-# Django-Projects
+# Authentication Application
