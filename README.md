@@ -1,5 +1,4 @@
 # Authentication-Application
-<br>
 
 # User Registration Using API Call (Postman)
 
@@ -13,11 +12,10 @@ In that section, We are registering a user through postman api. When user regist
 <br>
 Example.
 <br>
-<br>
 
 ![alt text](<Output/generate jwt token using registration.png>)
 
-<br><br>
+<br>
 
 # Fetch Data Using Authentication(Token Authentication/ JWT Token Authentication)
 
@@ -34,11 +32,10 @@ In that section, We are trying to access the data from server using api. If user
 <br>
 Example.
 <br>
-<br>
 
 ![alt text](<Output/getDataUsing token.png>)
 
-<br><br>
+<br>
 
 # Generate a JWT Token Based on given data
 
@@ -52,11 +49,9 @@ In that section, we are trying to generate a JWT Token Based on User Details lik
 <br>
 Example.
 <br>
-<br>
 
 ![alt text](<Output/generate token using given data.png>)
 
-<br>
 <br>
 
 # Refresh JWT Token
@@ -69,11 +64,10 @@ In that section, We are trying to refresh the JWT Token. JWT provides method to 
 <br>
 Example.
 <br>
-<br>
 
 ![alt text](<Output/refresh jwt token.png>)
 
-<br><br>
+<br>
 
 # Get or Create Token Using API 
 
@@ -87,7 +81,7 @@ In that section, We try to generate a Token using API Call. We are creating a To
 
 <br>
 Example.
-<br><br>
+<br>
 
 ![alt text](<Output/get or create token.png>)
 
