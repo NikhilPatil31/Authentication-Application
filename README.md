@@ -1,7 +1,8 @@
 # Authentication-Application
 <br>
+
 # User Registration Using API Call (Postman)
-<br>
+
 In that section, We are registering a user through postman api. When user register that time the jwt token is created or generated based on user credentials. I guide you step by step.
 <br>
 1. After setting the project you need to create super user. Login the admin panel and create a token for admin.
@@ -19,7 +20,7 @@ Example.
 <br><br>
 
 # Fetch Data Using Authentication(Token Authentication/ JWT Token Authentication)
-<br>
+
 In that section, We are trying to access the data from server using api. If user registered then the user can access the data.
 <br>
 1. After setting the project you need to create super user. Login the admin panel and create a token for admin.
@@ -40,7 +41,7 @@ Example.
 <br><br>
 
 # Generate a JWT Token Based on given data
-<br>
+
 In that section, we are trying to generate a JWT Token Based on User Details like Firstname, Lastname and Age.
 <br>
 
@@ -59,7 +60,7 @@ Example.
 <br>
 
 # Refresh JWT Token
-<br>
+
 In that section, We are trying to refresh the JWT Token. JWT provides method to refresh the expired JWT Token. Which helps to work fluintly.
 <br>
 1. After completing User registration using api call (postman) we get a two tokens Refresh Token and Access Token. Access Token used to accessing the data. Access token is expired after some time then we call the method which helps to generate new access token or refresh the access token.
@@ -74,8 +75,8 @@ Example.
 
 <br><br>
 
-# Get or Create Token Using API Call
-<br>
+# Get or Create Token Using API 
+
 In that section, We try to generate a Token using API Call. We are creating a Token for a user who is not have any token.
 <br>
 1. After setting django project you need to create super user. After that if you don't create a token for admin so don't worry we can generate the token either login admin panel or using API Call. But you want the another user token to generate the admin token.
@@ -90,4 +91,4 @@ Example.
 
 ![alt text](<Output/get or create token.png>)
 
-<br><br>
+<br>
