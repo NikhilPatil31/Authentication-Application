@@ -50,19 +50,21 @@ def registration(request):
             user = User.objects.create_user(username = username, password = password)
             user.save()
             refresh = RefreshToken.for_user(user)
-            return HttpResponse({
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
-            })
-            # return redirect('dashboard')
+            # return HttpResponse({
+            #     'refresh': str(refresh),
+            #     'access': str(refresh.access_token),
+            # })
+            # return redirect('dashboard',{'message':'Token Generated Successfully'})
+            
+            return render(request,'school/dashboard.html',{'msg':'Token Generated Successfully'})
 
     
     return render(request,'school/register.html',{'form':form})
 
 
+
 #Session Authentication
 def log_in(request):
-    
     form = UserForm()
     if request.method == 'POST':
         username = request.POST['username']
@@ -78,7 +80,7 @@ def log_in(request):
     
     return render(request,'school/login.html',{'form':form})
 
-@login_required(login_url='/')
+@login_required(login_url='/login')
 def dashboardView(request):
     queryset = Student.objects.all()
     serializer = StudentModelSerializer(queryset, many = True)

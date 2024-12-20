@@ -4,6 +4,9 @@
     <title>Dashboard</title>
 </head>
 <body>
+    {% if msg%}
+        <h3>{{msg}}</h3>
+    {%endif%}
     <h1>Student Details </h1>
     {%for student in data%}
         {{student.id}} <br>
