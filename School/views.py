@@ -59,42 +59,6 @@ def registration(request):
     
     return render(request,'school/register.html',{'form':form})
 
-#User Registration Using API Call (Postman)
-class RegisterView(APIView):
-    def post(self, request):
-        data = request.data
-        serializer = RegisterSerializer(data=data)
-        
-        if serializer.is_valid():
-            
-            username = serializer.data.get('username',False)
-            password = serializer.data.get('password',False)
-            confirm_password = serializer.data.get('confirm_password',False)
-
-            user = authenticate(username=username, password = password)
-            if user:
-                return Response({
-                    "status" : True,
-                    "message" : "Username already exist please login or enter different username",
-                    "data" : {} 
-                })
-
-            if password == confirm_password:
-                user = User.objects.create_user(username = username, password = password)
-                user.save()
-
-                refresh = RefreshToken.for_user(user)
-                return Response({
-                    'refresh': str(refresh),
-                    'access': str(refresh.access_token),
-                })        
-        
-        return Response({
-            'status' : True,
-            'message' : 'Something Wrong',
-            'data' : serializer.errors
-        })
-
 
 #Session Authentication
 def log_in(request):
@@ -147,6 +111,41 @@ def log_out(request):
     logout(request)
     return redirect("log_in")
 
+#User Registration Using API Call (Postman)
+class RegisterView(APIView):
+    def post(self, request):
+        data = request.data
+        serializer = RegisterSerializer(data=data)
+        
+        if serializer.is_valid():
+            
+            username = serializer.data.get('username',False)
+            password = serializer.data.get('password',False)
+            confirm_password = serializer.data.get('confirm_password',False)
+
+            user = authenticate(username=username, password = password)
+            if user:
+                return Response({
+                    "status" : True,
+                    "message" : "Username already exist please login or enter different username",
+                    "data" : {} 
+                })
+
+            if password == confirm_password:
+                user = User.objects.create_user(username = username, password = password)
+                user.save()
+
+                refresh = RefreshToken.for_user(user)
+                return Response({
+                    'refresh': str(refresh),
+                    'access': str(refresh.access_token),
+                })        
+        
+        return Response({
+            'status' : True,
+            'message' : 'Something Wrong',
+            'data' : serializer.errors
+        })
 
 #Fetch Data Using Authentication(Token Authentication/ JWT Token Authentication)
 class StudentApi(APIView):
@@ -166,8 +165,7 @@ class StudentApi(APIView):
 
     
 #Code To generate or get Token
-class LoginView(APIView):
-
+class GetTokenView(APIView):
     def post(self,request):
         data = request.data
         serializer = LoginSerializer(data=data)

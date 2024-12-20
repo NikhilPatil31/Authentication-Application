@@ -75,7 +75,7 @@ In that section, We try to generate a Token using API Call. We are creating a To
 <br>
 1. After setting django project you need to <b>create super user</b>. After that if you don't create a token for admin so don't worry we can generate the token either login admin panel or using API Call. But you want the another user token to generate the admin token.
 2. So do <b>User registration using api call (postman)</b> then you got <b>JWT Token</b>.
-3. After that go to postman and paste the url of login api(login/) and select POST method.
+3. After that go to postman and paste the url of get token api(get-token/) and select POST method.
 4. After that go to the Authorization and select <b>Bearer Token</b> and <b>pass the access key</b> in given field.
 5. Then goto the body section and select raw option and select JSON Type and write the <b>username, password</b> in JSON Format and hit the api, You are successfully get newly created Token or get existed Token.
 
