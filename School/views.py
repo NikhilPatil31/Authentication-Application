@@ -21,16 +21,17 @@ from django.views.decorators.csrf import csrf_exempt
 from AuthApplication.settings import SECRET_KEY
 
 
-# class getStudentData(APIView):
-#     permission_classes = [IsAuthenticated]
+class getStudentData(APIView):
+    """Get the student data using token authentication"""
+    permission_classes = [IsAuthenticated]
 
-#     def get(self, request, *args, **kwargs):
-#         queryset = Student.objects.all()
-#         serializer = StudentModelSerializer(queryset, many = True)
-#         json_data = JSONRenderer().render(serializer.data)
-#         # data = JSONParser(json_data)
-#         return HttpResponse(json_data, content_type= 'application/json')
-# @api_view(['GET','POST'])
+    def get(self, request, *args, **kwargs):
+        queryset = Student.objects.all()
+        serializer = StudentModelSerializer(queryset, many = True)
+        json_data = JSONRenderer().render(serializer.data)
+        # data = JSONParser(json_data)
+        return HttpResponse(json_data, content_type= 'application/json')
+@api_view(['GET','POST'])
 
 #User Registration Through webpage
 @csrf_exempt
@@ -50,11 +51,12 @@ def registration(request):
             user = User.objects.create_user(username = username, password = password)
             user.save()
             refresh = RefreshToken.for_user(user)
-            # return HttpResponse({
-            #     'refresh': str(refresh),
-            #     'access': str(refresh.access_token),
-            # })
-            # return redirect('dashboard',{'message':'Token Generated Successfully'})
+
+            """return HttpResponse({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            })
+            return redirect('dashboard',{'message':'Token Generated Successfully'})"""
             
             return render(request,'school/dashboard.html',{'msg':'Token Generated Successfully'})
 
@@ -87,27 +89,8 @@ def dashboardView(request):
     json_data = JSONRenderer().render(serializer.data)
     # return HttpResponse(json_data, content_type='application/json')
     data = json.loads(json_data)
-    # print(data)
-    # data = JSONParser(json_data)
     return render(request,'school/dashboard.html',{'data':data})
 
-# class DashboardView(TemplateView):
-#     template_name = 'school/dashboard.html'
-
-#     # @method_decorator(login_required, name='dispatch')
-#     # def dispatch(self, *args, **kwargs):
-#     #     return super().dispatch( *args, **kwargs)
-    
-#     @method_decorator(login_required, name='dispatch')
-#     def dispatch(self, request,*args, **kwargs):
-#         queryset = Student.objects.all()
-#         serializer = StudentModelSerializer(queryset, many = True)
-#         json_data = JSONRenderer().render(serializer.data)
-#         data = json.loads(json_data)
-#         # print(data)
-#         # data = JSONParser(json_data)
-#         return render(request,'school/dashboard.html',{'data':data})
-#         # return HttpResponse(json_data, content_type= 'application/json')
 
 def log_out(request):
     logout(request)
@@ -151,10 +134,11 @@ class RegisterView(APIView):
 
 #Fetch Data Using Authentication(Token Authentication/ JWT Token Authentication)
 class StudentApi(APIView):
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
+    """authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
 
-    #This expression is check the user accessing the data using which token
+    This expression is check the user accessing the data using which token"""
+
     if JWTAuthentication or IsAuthenticated :
         #User can access the data using token or jwt token
         def get(self, request):

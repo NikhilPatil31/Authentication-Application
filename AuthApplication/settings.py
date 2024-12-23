@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'School',
     'rest_framework.authtoken',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+}
